@@ -10,15 +10,8 @@ function App() {
     // BEM
     <div className="app">
       <Sidebar />
-      {/*Sidebar*/}
-
-      {/*MainFeed*/}
       <Feed />
-
-
-      {/*Widget*/}
       <Widgets />
-
     </div>
   );
 }
