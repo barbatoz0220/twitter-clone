@@ -27,14 +27,14 @@ function Feed() {
             <TweetBox />
 
             {posts.map(post => (
-            <Post
-            displayName={post.displayName}
-            username={post.username}
-            verified={post.verified}
-            text={post.text}
-            avatar={post.avatar}
-            image={post.image}
-            />
+                <Post
+                    displayName={post.displayName}
+                    username={post.username}
+                    verified={post.verified}
+                    text={post.text}
+                    avatar={post.avatar}
+                    image={post.image}
+                />
             ))}
         </div>
     );
