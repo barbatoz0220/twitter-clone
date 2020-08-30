@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./TweetBox.css";
 import { Avatar, Button } from "@material-ui/core";
-import TwitterIcon from '@material-ui/icons/Twitter';
 import db from "./Firebase";
 
 function TweetBox() {
