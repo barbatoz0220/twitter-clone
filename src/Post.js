@@ -11,24 +11,25 @@ function Post({ displayName, username, verified, text, image, avatar }) {
     return (
         <div className="post">
             <div className="post__avatar">
-                <Avatar src="https://cdn.24h.com.vn/upload/3-2019/images/2019-09-02/1567431753-628-mat-hoc-sinh---body-phu-huynh-60509124_454884445265423_713666839531126382_n-1562659399-width1080height1080.jpg"></Avatar>
+                <Avatar src={avatar}></Avatar>
             </div>
             <div className="post__body">
                 <div className="post__header">
                     <div className="post__headerText">
                         <h3>
-                            Nguyễn Ngọc Quỳnh{" "}
+                            {displayName}{" "}
                             <span className="post__headerSpecial">
-                                <VerifiedUserIcon className="post__badge" /> @wyntracyy
-              </span>
+                                {verified && <VerifiedUserIcon className="post__badge"/>}
+                                @{username}
+                            </span>
                         </h3>
                     </div>
                     <div className="post__headerDescription">
-                        <p>Kiss me hard before you go</p>
+                        <p>{text}</p>
                     </div>
                 </div>
                 <img
-                    src="https://1.bp.blogspot.com/-vCJPXsIWt9o/W15g5oELIeI/AAAAAAAAYPw/37J9i3jUuNYY1xjA1gePyaXIZxw9K-3UgCLcBGAs/s1600/wyntracyy_36501904_412969742528405_4970654458699579392_n.jpg" width="360"
+                    src={image} width="480"
                     alt=""
                 />
                 <div className="post__footer">
