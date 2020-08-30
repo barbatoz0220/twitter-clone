@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
-import Widgets from "./Widgets";
 import "./Feed.css";
+import db from "./Firebase";
 
 function Feed() {
+    // THis part imports the post from the database
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        // Run whenever the feed component loads
+        // This part loads the collection from the database, read every entry in the collection and their items (if exist)
+        db.collection('posts').onSnapshot(snapshot => (
+            setPosts(snapshot.docs.map(doc => doc.data()))
+        ))
+    }, []);
+
     return (
         <div className="feed">
             {/* Header */}
@@ -15,20 +26,16 @@ function Feed() {
             {/* TweetBox */}
             <TweetBox />
 
-            {/* Post */}
+            {posts.map(post => (
             <Post
-                displayName="WLOP"
-                username="wlopwangling"
-                verified={true}
-                text="WIP for August 30"
-                avatar={
-                    "https://wallpapercave.com/wp/wp2493743.jpg"
-                }
-                image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6f131d22-7974-4793-9db3-2160376b5c72/ddhj93p-b509cb78-4751-43f3-8d88-a97d25cdb8de.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNmYxMzFkMjItNzk3NC00NzkzLTlkYjMtMjE2MDM3NmI1YzcyXC9kZGhqOTNwLWI1MDljYjc4LTQ3NTEtNDNmMy04ZDg4LWE5N2QyNWNkYjhkZS5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.tW_6Z7w1m5cd0QbJONLfyQ0juDiZIWMhU6EDWdBKyww"
+            displayName={post.displayName}
+            username={post.username}
+            verified={post.verified}
+            text={post.text}
+            avatar={post.avatar}
+            image={post.image}
             />
-            <Post />
-            <Post />
-            <Post />
+            ))}
         </div>
     );
 }
