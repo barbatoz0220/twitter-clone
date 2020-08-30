@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./TweetBox.css";
 import { Avatar, Button } from "@material-ui/core";
+import TwitterIcon from '@material-ui/icons/Twitter';
 import db from "./Firebase";
 
 function TweetBox() {
@@ -10,7 +11,7 @@ function TweetBox() {
         e.preventDefault();
         db.collection("posts").add({
             displayName: "User",
-            username: "@useraccount",
+            username: "useraccount",
             verified: true,
             text: tweetMessage,
             avatar: "",
@@ -24,7 +25,7 @@ function TweetBox() {
         <div className="tweetBox">
             <form>
                 <div className="tweetBox__input">
-                    <Avatar></Avatar>
+                    <Avatar src=""></Avatar>
                     <input
                         onChange={(e) => setTweetMessage(e.target.value)}
                         value={tweetMessage}
